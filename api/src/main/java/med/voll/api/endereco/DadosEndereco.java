@@ -31,4 +31,6 @@ public record DadosEndereco(
         // Campos opcionais: não precisam de validação, podem ser nulos ou vazios
         String complemento,
         String numero
-) {}
+) {
+
+}
