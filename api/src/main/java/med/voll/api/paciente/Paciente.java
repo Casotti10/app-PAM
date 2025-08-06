@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.endereco.Endereco;
+import med.voll.api.medico.DadosAtualizacaoMedico;
 
 @Entity
 @Table(name = "pacientes") // nome da tabela no banco
@@ -30,6 +31,17 @@ public class Paciente {
         this.nome = dados.nome();
         this.cpf = dados.cpf();
         this.endereco = new Endereco(dados.endereco());
+    }
+    public void atualizarInformacoes(@Valid DadosAtualizacaoPaciente dados) {
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+        if (dados.cpf() != null) {
+            this.cpf = dados.cpf();
+        }
+        if (dados.endereco() != null) {
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
     }
 
 
